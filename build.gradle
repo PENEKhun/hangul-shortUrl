@@ -16,6 +16,10 @@ configurations {
 	}
 }
 
+bootRun {
+	jvmArgs = ["-Djava.net.preferIPv4Stack=true"] //get IPv4 instead IPv6
+}
+
 repositories {
 	maven { url 'https://repo.spring.io/release' }
 	mavenCentral()
@@ -39,6 +43,8 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'com.maxmind.geoip2:geoip2:2.15.0'
 }
 
 tasks.named('test') {
@@ -49,4 +55,5 @@ tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder:tiny'
 	environment = ['BP_NATIVE_IMAGE': 'true']
 }
+
 
