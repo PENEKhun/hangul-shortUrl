@@ -55,32 +55,35 @@
          </div>
       </div>
 
-      <div name="shorten" class="jumbotron" style="background-color: var(--bs-gray-200);">
-         <div class="container" style=" text-align: center;">
+      <div name="shorten" class="jumbotron" style="background-color: var(--bs-gray-200);content-visibility: auto;padding-top: 4%;padding-bottom: 3%;">
+
+         <div style="text-align: right;float:left;width:50%;padding-left: 10%;">
+            <img th:src="@{/img/pngwing.com.png}" style="width:30%;height:20%;"/>
+         </div>
+
+
+         <div class="container" style="float:left;width: 50%;padding-top: 3%;padding-right: 10%;text-align: -webkit-left;">
            <br/><br/>
 
-            <form>
-               <div style="width:50%;float:right;padding-top: 3%;padding-right: 10%; text-align: -webkit-left;">
-                  <p>
+
+               <div style="">
 
                   <h5 class="display-6" style="font-size: calc(0.7rem + 1.5vw);">짧게 만들고 싶은<br/>링크를 입력해주세요</h5>
+                  <form>
                   <div class="form-label-group" style="">
                      <input type="url" id="url" class="form-control" placeholder="http://" required="" autofocus="" style="width:50%;display:inline-block;">
                      <button type="button" class="btn btn-secondary" style="display:inline-block;" onclick="makeShort();">만들기</button>
-                  </p>
+
+
+                     <div class="resultDiv" name="resultDiv" style="width:65%">
+                        </div>
+                     </div>
+                  </form>
+
                   </div>
 
                </div>
-               <div style="width:50%;float:left;padding-left: 10%;">
-                  <img th:src="@{/img/pngwing.com.png}" style="width:30%;height:20%;"/>
-               </div>
-            </form>
 
-            <footer class="footer mt-auto py-3">
-               <div class="container">
-                  <span class="text-muted">Place sticky footer content here.</span>
-               </div>
-            </footer>
 
             <br/>
          </div>
