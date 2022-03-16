@@ -1,0 +1,18 @@
+language: java
+jdk:
+  - openjdk11
+
+branches: # 1.
+  only:
+    - master
+
+cache: # 2.
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+script: "./gradlew clean build" # 3.
+
+notifications: # 4.
+  email:
+    recipients:
+      - penekhun@gmail.com
