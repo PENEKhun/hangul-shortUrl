@@ -1,0 +1,35 @@
+language: java
+jdk:
+  - openjdk11
+
+branches: # 1.
+  only:
+    - master
+
+cache: # 2.
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+script: "./gradlew clean build" # 3.
+
+notifications: # 4.
+  email:
+    recipients:
+      - penekhun@gmail.com
+
+before_deploy:
+  - zip -r shortUrl *
+  - mkdir -p deploy
+  - mv shortUrl.zip deploy/shortUrl.zip
+# CodeDeploy는 Jar파일을 인식하지 못하므로 zip파일로 압축한다.
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: travis-ci-bucket-hun
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
