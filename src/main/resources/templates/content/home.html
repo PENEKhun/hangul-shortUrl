@@ -1,97 +1,148 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
-   <th:block layout:fragment="head">
-      <title>짧링!</title>
-      <!--/* css */-->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="">
-
-      <link th:href="@{/css/product.css}" rel="stylesheet" />
-      <link th:href="@{/css/hangul.css}" rel="stylesheet" />
-      <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-   </th:block>
-
-
-   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-   <script th:src="@{/js/ajax.js}"></script>
-
-   <style>
-
+<th:block layout:fragment="head">
+   <title>짧링!</title>
+   <!--/* css */-->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="">
+   <link th:href="@{/css/product.css}" rel="stylesheet" />
+   <link th:href="@{/css/hangul.css}" rel="stylesheet" />
+   <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</th:block>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script th:src="@{/js/ajax.js}"></script>
+<style>
       @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
-.nanumgothic * {
- font-family: 'Nanum Gothic', sans-serif;
-}
-
+      .nanumgothic * {
+      font-family: 'Nanum Gothic', sans-serif;
+      }
       .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
       }
 
       @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
+      .bd-placeholder-img-lg {
+      font-size: 3.5rem;
       }
-    </style>
+      }
 
-   <body style="font-family: 'Nanum Gothic', sans-serif;">
-   <main>
-      <th:block layout:fragment="header" th:include="@{/fragments/header}"></th:block>
-      <div layout:fragment="content" class="content">
-         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center hangul">
-            <div class="col-md-5 p-lg-5 mx-auto my-5">
-               <h1 class="display-5 fw-normal">한글로<br/>링크를 짧게<BR/>만들어 봐요</h1>
-               <p class="lead fw-normal"><bold>한글</bold>이 가지는 <bold>특징</bold>을 이용해<br/><bold>전세계 모든 링크</bold>를 <bold>짧게</bold> 만들 수 있습니다.</p>
-               <a class="btn btn-outline-secondary" href="#">자세히 알아보기</a>
-               <a class="btn btn-outline-secondary" href="#">링크 만들러 가기</a>
-            </div>
-          <!--  <div class="product-device shadow-sm d-none d-md-block"></div>
+
+      @media (min-width: 0px) and (max-width: 449px) {
+       .resultDiv{width: 100%;}
+       input#url{ width: 70vw !important; }
+       }
+
+       @media (min-width: 450px) and (max-width:767px) {
+       .resultDiv{ width: 70vw; }
+       input#url{ width: 65vw !important; }
+       }
+
+       @media (min-width: 768px) and (max-width:1020px){
+       .resultDiv{ width: 50vw;}
+        input#url{ width: 45vw !important; }
+      }
+
+       @media (min-width: 1021px){
+       .resultDiv{ width: 40vw;}
+        input#url{ width: 35vw !important; }
+      }
+
+      #leftIMG{
+      text-align: right;
+      float:left;
+      width:50%;
+      padding-left: 10%;
+      height:100%;
+      vertical-align: middle;
+      }
+
+      #rightCONTENT{
+      float:left;
+      width: 50%;
+      text-align: -webkit-left;
+      height:100%;
+      vertical-align: middle;
+      }
+
+      #sejong{
+      }
+
+      #shorten{
+      background-color: var(--bs-gray-200);
+      }
+
+      .resultDiv{
+
+      }
+
+      img{
+      max-width: 100%;
+      height: auto;
+      }
+   </style>
+<body style="font-family: 'Nanum Gothic', sans-serif;">
+<main>
+   <th:block layout:fragment="header" th:include="@{/fragments/header}"></th:block>
+   <div layout:fragment="content" class="content">
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center hangul">
+         <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 class="display-5 fw-normal">한글로<br/>링크를 짧게<BR/>만들어 봐요</h1>
+            <p class="lead fw-normal">
+               <bold>한글</bold>
+               이 가지는
+               <bold>특징</bold>
+               을 이용해<br/>
+               <bold>전세계 모든 링크</bold>
+               를
+               <bold>짧게</bold>
+               만들 수 있습니다.
+            </p>
+            <a class="btn btn-outline-secondary" href="#about" >자세히 알아보기</a>
+            <a class="btn btn-outline-secondary" href="#shorten" onclick="" >링크 만들러 가기</a>
+         </div>
+         <!--  <div class="product-device shadow-sm d-none d-md-block"></div>
             <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>-->
-         </div>
       </div>
 
-      <div name="shorten" class="jumbotron" style="background-color: var(--bs-gray-200);content-visibility: auto;padding-top: 4%;padding-bottom: 3%;">
+      <div id="shorten" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" >
+   <!--      <div id="leftIMG">
 
-         <div style="text-align: right;float:left;width:50%;padding-left: 10%;">
-            <img th:src="@{/img/pngwing.com.png}" style="width:30%;height:20%;"/>
-         </div>
+            <img id="sejong" th:src="@{/img/pngwing.com.png}"/>
+         </div>-->
 
+         <!--<div id="rightCONTENT">-->
 
-         <div class="container" style="float:left;width: 50%;padding-top: 3%;padding-right: 10%;text-align: -webkit-left;">
-           <br/><br/>
-
-
-               <div style="">
-
-                  <h5 class="display-6" style="font-size: calc(0.7rem + 1.5vw);">짧게 만들고 싶은<br/>링크를 입력해주세요</h5>
-                  <form>
-                  <div class="form-label-group" style="">
-                     <input type="url" id="url" class="form-control" placeholder="http://" required="" autofocus="" style="width:50%;display:inline-block;">
-                     <button type="button" class="btn btn-secondary" style="display:inline-block;" onclick="makeShort();">만들기</button>
-
-
-                     <div class="resultDiv" name="resultDiv" style="width:65%">
-                        </div>
-                     </div>
-                  </form>
-
-                  </div>
-
+         <div style="text-align: -webkit-center;">
+            <div class="form-label-group" style="">
+               <input type="url" id="url" class="form-control" placeholder="http://url.com" required="" style="display:inline-block;" onkeyup="if(window.event.keyCode==13){makeShort();}">
+               <button type="button" class="btn btn-secondary" style="display:inline-block;" onclick="makeShort();">만들기</button>
+               <br/>
+               <div class="resultDiv" name="resultDiv">
                </div>
-
-
-            <br/>
+            </div>
          </div>
+         </div>
+
+      <div id="about" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center hangul">
+         <div class="col-md-5 p-lg-5 mx-auto my-5">
+           원리
+         </div>
+         ㅁㄴㅇ
+         <!--  <div class="product-device shadow-sm d-none d-md-block"></div>
+            <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>-->
       </div>
 
-   </main>
 
 
-      <th:block layout:fragment="footer" th:include="@{/fragments/footer}"></th:block>
-   </body>
+   </div>
+
+
+</main>
+<th:block layout:fragment="footer" th:include="@{/fragments/footer}"></th:block>
+</body>
 </html>
