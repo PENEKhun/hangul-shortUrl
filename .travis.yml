@@ -13,23 +13,23 @@ cache: # 2.
   directories:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
-script: "./gradlew bootJar -x Test" # 3.
-
+script: "./gradlew clean build bootJar -x Test" # 3.
 
 notifications: # 4.
   email:
     recipients:
       - penekhun@gmail.com
 
+
 before_install:
   #  gradle 버전 변경
-  - sudo wget https://services.gradle.org/distributions/gradle-6.8-bin.zip
-  - sudo unzip -qq gradle-6.8-bin.zip
-  - export GRADLE_HOME=$PWD/gradle-6.8
+  - sudo wget https://services.gradle.org/distributions/gradle-7.4-bin.zip
+  - sudo unzip -qq gradle-7.4-bin.zip
+  - export GRADLE_HOME=$PWD/gradle-7.4
   - export PATH=$GRADLE_HOME/bin:$PATH
   - gradle -version
   - gradle wrap
-  - chmod +x ./gradlew  # gradlew 실행 권한 부여
+  - chmod +x ./gradlew  # gradlew 실행 권한 부여 */
 
 before_deploy:
   - mkdir -p before_deploy
@@ -40,7 +40,6 @@ before_deploy:
   - cd before_deploy
   - zip -r before_deploy * && cd ../
   - mv before_deploy/before_deploy.zip real-deploy/shortUrl.zip
-# CodeDeploy는 Jar파일을 인식하지 못하므로 zip파일로 압축한다.
 
 deploy:
   - provider: s3
