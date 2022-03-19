@@ -3,12 +3,12 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'org.hibernate.orm'
+	id 'application'
 }
-/*
 
 application {
 	mainClassName = "com.penek.shortUrl.ShortUrlApplication"
-}*/
+}
 
 group = 'com.penek'
 version = '0.0.1-SNAPSHOT'
