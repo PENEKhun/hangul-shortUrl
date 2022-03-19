@@ -21,7 +21,9 @@ bootRun {
 }
 
 bootJar {
-	mainClassName = 'com.penek.shortUrl.ShortUrlApplication'
+	manifest {
+		attributes 'Start-Class': 'com.penek.shortUrl.ShortUrlApplication'
+	}
 }
 
 repositories {
