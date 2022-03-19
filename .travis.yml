@@ -15,10 +15,15 @@ cache: # 2.
     - '$HOME/.gradle'
 script: "./gradlew bootJar -x Test" # 3.
 
+
 notifications: # 4.
   email:
     recipients:
       - penekhun@gmail.com
+
+before_install:
+  - gradle wrap
+  - chmod +x ./gradlew  # gradlew 실행 권한 부여
 
 before_deploy:
   - mkdir -p before_deploy
