@@ -31,7 +31,8 @@ before_install:
 before_deploy:
   - mkdir -p before_deploy
   - mkdir -p real-deploy
-  - cp build/libs/*.jar before_deploy/
+  - cp -r build/ before_deploy/
+  - ls before_deploy
   - cp appspec.yml before_deploy/
   - cp DeployScript.sh before_deploy/
   - cd before_deploy
