@@ -3,8 +3,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'org.hibernate.orm'
-	id 'application'
 }
+/*
 
 application {
 	mainClassName = "com.penek.shortUrl.ShortUrlApplication"
@@ -13,6 +13,7 @@ application {
 bootJar{
 	mainClass = application.getMainClass();
 }
+*/
 
 
 group = 'com.penek'
@@ -25,17 +26,19 @@ configurations {
 	}
 }
 
+/*
 springBoot {
 	mainClass = "com.penek.shortUrl.ShortUrlApplication"
 	//setMainClass("com.penek.shortUrl.ShortUrlApplication")
 }
+*/
 
 bootRun {
 	jvmArgs = ["-Djava.net.preferIPv4Stack=true"] //get IPv4 instead IPv6
 }
 
 repositories {
-	//maven { url 'https://repo.spring.io/release' }
+	maven { url 'https://repo.spring.io/release' }
 	mavenCentral()
 }
 

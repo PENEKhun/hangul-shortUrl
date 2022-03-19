@@ -10,8 +10,6 @@ permissions:
     pattern: "**"
     owner: ubuntu
     group: ubuntu
-
-
 hooks:
   ApplicationStart:
     - location: DeployScript.sh
