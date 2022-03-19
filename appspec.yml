@@ -11,7 +11,6 @@ permissions:
     owner: ubuntu
     group: ubuntu
 hooks:
-  ApplicationStart:
-    - location: DeployScript.sh
-      timeout: 10
+    AfterInstall:
+    - location: bootScripts/initRun
       runas: ubuntu

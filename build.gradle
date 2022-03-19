@@ -10,6 +10,13 @@ application {
 	mainClassName = "com.penek.shortUrl.ShortUrlApplication"
 }
 
+bootJar{
+	archivesBaseName = 'shortUrl'
+	archiveFileName = 'shortUrl.jar'
+	archiveVersion = "0.0.1"
+}
+
+
 group = 'com.penek'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -59,6 +66,7 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
 
 
 sourceSets {

@@ -34,7 +34,7 @@ before_deploy:
   - cp -r build/ before_deploy/
   - ls before_deploy
   - cp appspec.yml before_deploy/
-  - cp DeployScript.sh before_deploy/
+  - cp initRun.sh before_deploy/
   - cd before_deploy
   - zip -r before_deploy * && cd ../
   - mv before_deploy/before_deploy.zip real-deploy/shortUrl.zip
