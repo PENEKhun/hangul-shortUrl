@@ -24,8 +24,8 @@ before_deploy:
   - mkdir -p before_deploy
   - mkdir -p deploy
   - cp build/libs/*.jar before_deploy/
-  - cp deploy/appspec.yml before_deploy/
-  - cp deploy/DeployScript.sh before_deploy/
+  - cp appspec.yml before_deploy/
+  - cp DeployScript.sh before_deploy/
   - cd before_deploy
   - zip -r before_deploy *
   - mv before_deploy.zip ../deploy/shortUrl.zip
