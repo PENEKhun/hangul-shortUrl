@@ -16,8 +16,8 @@ configurations {
 	}
 }
 
-bootJar {
-	mainClass = 'com.penek.shortUrl.ShortUrlApplication'
+springBoot {
+	mainClass = "com.penek.shortUrl.ShortUrlApplication"
 }
 
 bootRun {
