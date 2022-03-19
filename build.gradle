@@ -5,6 +5,9 @@ plugins {
 	id 'org.hibernate.orm'
 }
 
+apply plugin: 'application'
+mainClassName = 'com.penek.shortUrl.ShortUrlApplication'
+
 group = 'com.penek'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -17,10 +20,6 @@ configurations {
 
 bootRun {
 	jvmArgs = ["-Djava.net.preferIPv4Stack=true"] //get IPv4 instead IPv6
-}
-
-bootJar {
-	mainClass = 'com.penek.shortUrl.ShortUrlApplication'
 }
 
 repositories {
