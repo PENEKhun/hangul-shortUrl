@@ -67,3 +67,108 @@
     flex: 1;
   }
 }
+
+
+@font-face {
+    font-family: 'EBSHunminjeongeumSBA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/EBSHunminjeongeum.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+      @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+      .nanumgothic * {
+      font-family: 'Nanum Gothic', sans-serif;
+      }
+      .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      }
+
+      @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+      }
+      }
+
+
+      @media (min-width: 0px) and (max-width: 449px) {
+       .resultDiv{width: 100%;}
+       input#url{ width: 70vw !important; }
+       }
+
+       @media (min-width: 450px) and (max-width:767px) {
+       .resultDiv{ width: 70vw; }
+       input#url{ width: 65vw !important; }
+       }
+
+       @media (min-width: 768px) and (max-width:1020px){
+       .resultDiv{ width: 50vw;}
+        input#url{ width: 45vw !important; }
+      }
+
+       @media (min-width: 1021px){
+       .resultDiv{ width: 40vw;}
+        input#url{ width: 35vw !important; }
+      }
+
+      #leftIMG{
+      text-align: right;
+      float:left;
+      width:50%;
+      padding-left: 10%;
+      height:100%;
+      vertical-align: middle;
+      }
+
+      #rightCONTENT{
+      float:left;
+      width: 50%;
+      text-align: -webkit-left;
+      height:100%;
+      vertical-align: middle;
+      }
+
+      #sejong{
+      }
+
+      #shorten{
+      background-color: var(--bs-gray-200);
+      }
+
+      .resultDiv{
+
+      }
+
+    #makeBtn{
+    background-color: #6c757d;
+    border-color: #6c757d;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: white;
+}
+
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+      img{
+      max-width: 100%;
+      height: auto;
+      }
