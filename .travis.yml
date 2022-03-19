@@ -22,13 +22,13 @@ notifications: # 4.
 
 before_deploy:
   - mkdir -p before_deploy
-  - mkdir -p deploy
+  - mkdir -p real-deploy
   - cp build/libs/*.jar before_deploy/
   - cp appspec.yml before_deploy/
   - cp DeployScript.sh before_deploy/
   - cd before_deploy
-  - zip -r before_deploy *
-  - mv before_deploy.zip ../deploy/shortUrl.zip
+  - zip -r before_deploy * && cd ../
+  - mv before_deploy/before_deploy.zip real-deploy/shortUrl.zip
 # CodeDeploy는 Jar파일을 인식하지 못하므로 zip파일로 압축한다.
 
 deploy:
@@ -39,7 +39,7 @@ deploy:
     region: ap-northeast-2
     skip_cleanup: true
     acl: private
-    local_dir: deploy
+    local_dir: real-deploy
     wait-until-deployed: true
     on:
       all_branches: true #마스터가 아닌 브런치도 deploy할 수 있게
