@@ -41,7 +41,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: seonghun-shorturl-bucket-build
     region: ap-northeast-2
-    skip_cleanup: true
+    cleanup: true
     acl: private
     local_dir: real-deploy
     wait-until-deployed: true

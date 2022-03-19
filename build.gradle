@@ -1,5 +1,3 @@
-import org.springframework.boot.gradle.plugin.ResolveMainClassName
-
 plugins {
 	id 'org.springframework.boot' version '2.6.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -19,8 +17,10 @@ configurations {
 	}
 }
 
-
-bootJarMainClassName = "com.penek.shortUrl.ShortUrlApplication" as ResolveMainClassName()
+springBoot {
+	mainClass = "com.penek.shortUrl.ShortUrlApplication"
+	//setMainClass("com.penek.shortUrl.ShortUrlApplication")
+}
 
 bootRun {
 	jvmArgs = ["-Djava.net.preferIPv4Stack=true"] //get IPv4 instead IPv6
