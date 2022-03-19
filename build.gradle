@@ -16,6 +16,14 @@ configurations {
 	}
 }
 
+bootJar {
+	mainClassName = 'com.penek.shortUrl.ShortUrlApplication'
+}
+
+bootRun {
+	mainClassName = 'com.penek.shortUrl.ShortUrlApplication'
+}
+
 springBoot {
 	mainClass = "com.penek.shortUrl.ShortUrlApplication"
 	//setMainClass("com.penek.shortUrl.ShortUrlApplication")
