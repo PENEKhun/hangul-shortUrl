@@ -16,9 +16,6 @@ configurations {
 	}
 }
 
-bootJar {
-	mainClassName = 'com.penek.shortUrl.ShortUrlApplication'
-}
 
 bootRun {
 	mainClassName = 'com.penek.shortUrl.ShortUrlApplication'
