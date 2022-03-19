@@ -41,12 +41,13 @@ function makeWait() {
     return str;
 }
 
-function makeShort() {
+function makeShort(token) {
     $(".resultDiv").html(makeWait()); //loading
 
     var data = $("#url").val();
     var messageDTO = {
-        originUrl: data
+        originUrl: data,
+        'token': token
     };
     $.ajax({
         url: "/make/",
