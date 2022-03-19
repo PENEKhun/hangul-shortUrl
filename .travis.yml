@@ -13,7 +13,7 @@ cache: # 2.
   directories:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
-script: "./gradlew clean build bootJar -x Test" # 3.
+script: "./gradlew bootJar -x Test" # 3.
 
 notifications: # 4.
   email:
