@@ -14,7 +14,7 @@ cache:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
 
-script: "./gradlew build -x Test" # 3.
+script: "./gradlew clean build bootRun -x Test" # 3.
 
 notifications: # 4.
   email:
@@ -25,13 +25,10 @@ notifications: # 4.
 before_install:
   - chmod +x ./gradlew  # gradlew 실행 권한 부여 */
 
-after_success:
-  - java -jar shortUrl-0.0.1-SNAPSHOT.jar
-
 before_deploy:
   - mkdir -p before_deploy
   - mkdir -p real-deploy
-  - cp build/*.jar before_deploy/
+  - cp build/libs/*.jar before_deploy/
   - cp appspec.yml before_deploy/
   - cp DeployScript.sh before_deploy/
   - cd before_deploy
