@@ -20,12 +20,6 @@ bootRun {
 	jvmArgs = ["-Djava.net.preferIPv4Stack=true"] //get IPv4 instead IPv6
 }
 
-bootJar {
-	manifest {
-		attributes 'Start-Class': 'com.penek.shortUrl.ShortUrlApplication'
-	}
-}
-
 repositories {
 	maven { url 'https://repo.spring.io/release' }
 	mavenCentral()
