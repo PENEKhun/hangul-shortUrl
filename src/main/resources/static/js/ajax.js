@@ -69,7 +69,8 @@ function makeShort(token) {
             $(".resultDiv").html(msg);
         },
         error: function(xhr, status, error) {
-            var err = xhr.responseText;
+            var jsonResponse = JSON.parse(xhr.responseText);
+            var err = jsonResponse["message"];
             console.log(err);
             if (err == "redirect URL") {
                 //리다이렉션되는 url
@@ -78,16 +79,20 @@ function makeShort(token) {
             } else if (err == "bad security URL") {
                 var msg = "애석하게도...<br/>";
                 msg += "짧링은 더 짧아질 수 없습니다 ㅜㅜ";
-            } else if (err == "no Input"){
-                                   var msg = "링크를 입력해주세요";
-                                           } else if (err == "link not found"){
-                                                                  var msg = "실존하지 않는 링크입니다";
-                                                                  msg += "링크를 확인해주세요.";
-                                                              } else
-                               {
-                                               var msg = "잘못된 링크입니다.<br/>";
-                                               msg += "링크에 오탈자가 있는지 확인해주세요.";
-                                           }
+            } else if (err == "no Input") {
+                var msg = "링크를 입력해주세요";
+            } else if (err == "link not found") {
+                var msg = "실존하지 않는 링크입니다";
+                msg += "링크를 확인해주세요.";
+            } else if (err == "captcha error") {
+                var msg = "캡챠인증에 실패했습니다.";
+                msg += "새로고침 후 재시도 해보세요.";
+            } else if (err == "no input") {
+                var msg = "링크를 입력해주세요.";
+            } else {
+                var msg = "잘못된 링크입니다.<br/>";
+                msg += "링크에 오탈자가 있는지 확인해주세요.";
+            }
 
 
             $(".resultDiv").html(msg);
