@@ -8,13 +8,7 @@ plugins {
 
 application {
 	mainClassName = "com.penek.shortUrl.ShortUrlApplication"
-}
-
-bootJar{
-	mainClass = application.getMainClass();
-}
-*/
-
+}*/
 
 group = 'com.penek'
 version = '0.0.1-SNAPSHOT'
