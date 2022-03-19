@@ -36,3 +36,5 @@ deploy:
     acl: private
     local_dir: deploy
     wait-until-deployed: true
+    on:
+      all_branches: true #마스터가 아닌 브런치도 deploy할 수 있게
