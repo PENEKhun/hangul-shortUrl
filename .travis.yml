@@ -42,6 +42,7 @@ deploy:
     bucket: seonghun-shorturl-bucket-build
     region: ap-northeast-2
     acl: private
+    skip_cleanup: true
     local_dir: real-deploy
     wait-until-deployed: true
     on:
