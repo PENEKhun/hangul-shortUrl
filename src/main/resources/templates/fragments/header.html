@@ -1,43 +1,53 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <style>
    @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 .nanumgothic * {
  font-family: 'Nanum Gothic', sans-serif;
 }
+
+@font-face {
+    font-family: 'EBSHunminjeongeumSBA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/EBSHunminjeongeum.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .nav{
+  display: none;
+  }
+}
+
 </style>
    <div class="header">
-      <header style="font-family: 'Nanum Gothic', sans-serif;" >
+      <header style="font-family: 'EBSHunminjeongeumSBA', sans-serif;" >
          <div class="px-3 py-2 bg-dark text-white">
             <div class="container">
                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                   <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                     <p style="margin-top:20%">
-                     <h3>짧</h3>
-                     <h6>은</h6>
-                     <h3>링</h3>
-                     <h6>크</h6>
+                     <p style="">
+                        <img id="logo" th:src="@{/img/icon.png}" style="width:120px;height:72px"/>
                      </p>
 
-                     <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
                   </a>
 
                   <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                      <li>
-                        <a href="#" class="nav-link text-secondary">
-                           <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#about"></use></svg>
+                        <a href="/#about" class="nav-link text-secondary">
+                         <use xlink:href="/#about"></use>
                            짧링 이란?
                         </a>
                      </li>
                      <li>
-                        <a href="#shorten" class="nav-link text-white">
-                           <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#shorten"></use></svg>
+                        <a href="/#shorten" class="nav-link text-white">
+                           <use xlink:href=""></use>
                            짧은 주소 만들기
                         </a>
                      </li>
                      <li>
-                        <a href="/dashboard" class="nav-link text-white">
-                           <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="dashboard"></use></svg>
+                        <a href="/#dashboard" class="nav-link text-white">
+                           <use xlink:href=""></use>
                            대시보드
                         </a>
                      </li>
