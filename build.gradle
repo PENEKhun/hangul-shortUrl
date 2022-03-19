@@ -3,7 +3,6 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'org.hibernate.orm'
-	id 'application'
 }
 
 
@@ -17,9 +16,6 @@ configurations {
 	}
 }
 
-springBoot {
-	mainClass = "com.penek.shortUrl.ShortUrlApplication"
-}
 
 bootRun {
 	jvmArgs = ["-Djava.net.preferIPv4Stack=true"] //get IPv4 instead IPv6
