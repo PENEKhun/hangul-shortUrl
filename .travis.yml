@@ -8,12 +8,13 @@ arch: amd64
 branches: # 1.
   only:
     - dev
+    - master
 
-cache: # 2.
+cache:
   directories:
     - '$HOME/.m2/repository'
-    - '$HOME/.gradle'
-script: "./gradlew clean build bootJar -x Test" # 3.
+
+script: "./gradlew build -x Test" # 3.
 
 notifications: # 4.
   email:
@@ -22,13 +23,6 @@ notifications: # 4.
 
 
 before_install:
-  #  gradle 버전 변경
-  - sudo wget https://services.gradle.org/distributions/gradle-7.4-bin.zip
-  - sudo unzip -qq gradle-7.4-bin.zip
-  - export GRADLE_HOME=$PWD/gradle-7.4
-  - export PATH=$GRADLE_HOME/bin:$PATH
-  - gradle -version
-  - gradle wrap
   - chmod +x ./gradlew  # gradlew 실행 권한 부여 */
 
 before_deploy:
