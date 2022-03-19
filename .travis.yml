@@ -4,7 +4,7 @@ jdk:
 
 branches: # 1.
   only:
-    - master
+    - dev
 
 cache: # 2.
   directories:
