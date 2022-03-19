@@ -4,6 +4,9 @@ jdk:
 
 dist: focal
 
+os: linux
+arch: amd64
+
 branches: # 1.
   only:
     - dev
@@ -42,7 +45,7 @@ deploy:
     bucket: seonghun-shorturl-bucket-build
     region: ap-northeast-2
     acl: private
-    skip_cleanup: true
+    cleanup: false
     local_dir: real-deploy
     wait-until-deployed: true
     on:
