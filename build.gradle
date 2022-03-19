@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'org.hibernate.orm'
+	id 'application'
 }
 
 
@@ -53,5 +54,14 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src/main/java'
+		}
+	}
 }
 
