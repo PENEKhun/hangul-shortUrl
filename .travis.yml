@@ -22,6 +22,11 @@ notifications: # 4.
       - penekhun@gmail.com
 
 before_install:
+  - wget http://services.gradle.org/distributions/gradle-6.8.1-bin.zip
+  - unzip -qq gradle-6.8.1-bin.zip
+  - export GRADLE_HOME=$PWD/gradle-6.8.1
+  - export PATH=$GRADLE_HOME/bin:$PATH
+  - gradle -v
   - gradle wrap
   - chmod +x ./gradlew  # gradlew 실행 권한 부여
 
