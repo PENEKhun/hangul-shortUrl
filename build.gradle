@@ -20,7 +20,7 @@ configurations {
 }
 
 
-bootJarMainClassName = "" as ResolveMainClassName("com.penek.shortUrl.ShortUrlApplication")
+bootJarMainClassName = "com.penek.shortUrl.ShortUrlApplication" as ResolveMainClassName()
 
 bootRun {
 	jvmArgs = ["-Djava.net.preferIPv4Stack=true"] //get IPv4 instead IPv6
