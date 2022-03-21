@@ -10,7 +10,7 @@ permissions:
     pattern: "**"
     owner: ubuntu
     group: ubuntu
-hooks:
-    AfterInstall:
-    - location: bootScripts/initRun
-      runas: ubuntu
+#hooks:
+#    AfterInstall:
+#    - location: bootScripts/initRun
+#      runas: ubuntu
