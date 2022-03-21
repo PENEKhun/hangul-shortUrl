@@ -1,8 +1,3 @@
 #!/bin/bash
-cd ~/app/zip/binary/
-
-mv libs lib
-
-cd bootScripts
-
-sh shortUrl
+cd ~/app/zip/build/libs
+nohup java -jar shortUrl.jar &
