@@ -15,7 +15,7 @@
    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
  </th:block>
 
-<script th:src="@{/js/ajax.js}"></script>
+<script th:src="@{/js/loadLog.js}"></script>
 <script th:src="@{/js/dashboard.js}"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -63,65 +63,38 @@
                      </h6>
 
                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
-                           <span data-feather="home"></span>
+                        <a class="nav-link active" aria-current="page" onclick="loadAll();">
+                           <span data-feather="all"></span>
                            전부 보기
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                           <span data-feather="file"></span>
+                        <a class="nav-link" onclick="loadCountry();">
+                           <span data-feather="country"></span>
                            접속 국가
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                           <span data-feather="shopping-cart"></span>
+                        <a class="nav-link" onclick="loadDevice();">
+                           <span data-feather="device"></span>
                            접속 기기
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                           <span data-feather="users"></span>
+                        <a class="nav-link" onclick="loadBrowser();">
+                           <span data-feather="browser"></span>
                            접속 브라우저
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                           <span data-feather="bar-chart-2"></span>
+                        <a class="nav-link" onclick="loadTime();">
+                           <span data-feather="time"></span>
                            접속 시간대
                         </a>
                      </li>
 
                   </ul>
 
-<!--
-                  <ul class="nav flex-column mb-2">
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                           <span data-feather="file-text"></span>
-                           Current month
-                        </a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                           <span data-feather="file-text"></span>
-                           Last quarter
-                        </a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                           <span data-feather="file-text"></span>
-                           Social engagement
-                        </a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                           <span data-feather="file-text"></span>
-                           Year-end sale
-                        </a>
-                     </li>
-                  </ul>-->
                </div>
             </nav>
 
@@ -144,50 +117,7 @@
                <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
 <script>
-   var ctx = document.getElementById('myChart')
-
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
-      datasets: [{
-        data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
-        ],
-        lineTension: 0,
-        backgroundColor: 'transparent',
-        borderColor: '#007bff',
-        borderWidth: 4,
-        pointBackgroundColor: '#007bff'
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }]
-      },
-      legend: {
-        display: false
-      }
-    }
-  })
+ loadAll();
 </script>
 
                <h2>최근 접속 기록</h2>
@@ -204,10 +134,10 @@
 
                      <tbody>
                      <tr>
-                        <td>1</td>
-                        <td>미상</td>
-                        <td>미상</td>
-                        <td>11:11:11:11</td>
+                        <td></td>
+                        <td>표시할 데이터가 없습니다.</td>
+                        <td></td>
+                        <td></td>
                      </tr>
                      </tbody>
 
