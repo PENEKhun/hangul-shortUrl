@@ -17,7 +17,7 @@ public class ShortServiceTests {
     @Test
     @DisplayName("idx to Short, Short to idx 상호 테스트")
     void Short와_idx_상호테스트(){
-       // Assertions.assertEquals();
+        // Assertions.assertEquals();
 
         //given
         BigInteger testIdx1 = new BigInteger("1");
