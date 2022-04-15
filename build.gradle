@@ -27,13 +27,6 @@ configurations {
 	}
 }
 
-/*
-springBoot {
-	mainClass = "com.penek.shortUrl.ShortUrlApplication"
-	//setMainClass("com.penek.shortUrl.ShortUrlApplication")
-}
-*/
-
 bootRun {
 	jvmArgs = ["-Djava.net.preferIPv4Stack=true"] //get IPv4 instead IPv6
 }
