@@ -120,7 +120,7 @@ char unicode = (char) (44032 + (chosung*21*28) + (jungsung * 28) + jongsung);
 ```
 >result = 개
 
-
+  
 # 라이센스 정보
 * Bootstrap v5.1.3 (https://getbootstrap.com/)
 * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
