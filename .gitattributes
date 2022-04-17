@@ -1,2 +1,2 @@
-src/main/resources/static/js/** linguist-documentation=false
-src/main/resources/static/js/** linguist-vendored=false
+* linguist-vendored
+*.java linguist-vendored=false
