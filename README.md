@@ -37,7 +37,8 @@
 실행할때 : `java`  
 데이터베이스 : `mysql`
 
-그리고 application.yml을 통해 DB 접속정보를 작성해주셔야 합니다.
+`application.yml을 통해 DB 접속정보를 작성해주셔야 합니다.`
+`RecaptchaService.java에 있는 리캡챠 key값을 수정해주셔야 합니다.`
 
 
 
