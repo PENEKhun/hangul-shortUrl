@@ -4,6 +4,11 @@
 **한글**이 가지는 **특징** 을 이용해  
 **전세계 모든 링크**를 **짧게** 만들 수 있습니다.
 
+![media io_wNb3cBDI](https://user-images.githubusercontent.com/13290706/169490564-49d57a3e-cf46-42fb-b421-918854c6a77a.gif)
+
+Your URL will be shorten using hangul  
+Like http://stackoverflow.com -> http://host/가나다라마  
+
 ```
 한글은 초성 중성 종성으로 이루어져있습니다.  
   
@@ -20,31 +25,31 @@
 
 ## 기술 스택
 서버
-`Java`
-`SpringBoot`
-`JPA`
+`Java`  
+`SpringBoot`  
+`JPA`  
 
 클라이언트
-`Thymeleaf`
-`Html`
-`JavaScript`
+`Thymeleaf`  
+`Html`  
+`JavaScript`  
 
 데이터베이스
-`Mysql`
+`Mysql`  
 
 
 ## 필요한 환경
 실행할때 : `java`  
-데이터베이스 : `mysql`
+데이터베이스 : `mysql`  
 
-`application.yml을 통해 DB 접속정보를 작성해주셔야 합니다.`
-`RecaptchaService.java에 있는 리캡챠 key값을 수정해주셔야 합니다.`
+`application.yml을 통해 DB 접속정보를 작성해주셔야 합니다.`  
+`RecaptchaService.java에 있는 리캡챠 key값을 수정해주셔야 합니다.`  
 
 
 
 ## 사용법
 Without Running TestCode (Todo: TestCode Write)  
-`./gradlew bootRun`
+`./gradlew bootRun`  
 
 
 ## 중요 알고리즘
