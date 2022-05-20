@@ -7,7 +7,7 @@
 ![media io_wNb3cBDI](https://user-images.githubusercontent.com/13290706/169490564-49d57a3e-cf46-42fb-b421-918854c6a77a.gif)
 
 Your URL will be shorten using hangul  
-Like http://stackoverflow.com -> http://host/가나다라마  
+Like http://stackoverflow.com/blaaaaaaaa -> http://host/가나다라마  
 
 ```
 한글은 초성 중성 종성으로 이루어져있습니다.  
