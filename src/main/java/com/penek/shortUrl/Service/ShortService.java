@@ -37,6 +37,23 @@ public class ShortService {
     @Autowired
     ResourceLoader resourceLoader;
 
+    public void logging(RequestInformation data) {
+        displayLogTerminal(data);
+        saveLogDatabase(data);
+    }
+
+    private void displayLogTerminal(RequestInformation data) {
+        log.info("########## user approached at {} #########", data.getHangul());
+        log.info("    connected header information");
+        log.info("    ip Addr : {}", data.getIp());
+        log.info("    country : {}", getCountry(data.getIp()));
+        log.info("    userAgent : {}", data.getUserAgent());
+        log.info("    operatingSystem : {}", OperatingSystem.of(data.getUserAgent()).osName());
+        log.info("    browser : {}", Browser.of(data.getUserAgent()).browserName());
+        log.info("    referer : {}", data.getReferer());
+        log.info("################################################");
+    }
+
     public ResponseEntity make(String originUrl) throws MalformedURLException {
 
         urlValidator(originUrl);
