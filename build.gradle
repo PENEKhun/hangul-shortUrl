@@ -19,7 +19,7 @@ bootJar{
 
 group = 'com.penek'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 configurations {
 	compileOnly {
@@ -59,15 +59,5 @@ dependencies {
 }
 tasks.named('test') {
 	useJUnitPlatform()
-}
-
-
-
-sourceSets {
-	main {
-		java {
-			srcDir 'src/main/java'
-		}
-	}
 }
 

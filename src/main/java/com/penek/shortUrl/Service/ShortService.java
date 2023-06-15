@@ -1,17 +1,13 @@
 package com.penek.shortUrl.Service;
 
-import com.maxmind.geoip2.DatabaseReader;
-import com.maxmind.geoip2.exception.AddressNotFoundException;
-import com.maxmind.geoip2.exception.GeoIp2Exception;
-import com.maxmind.geoip2.model.CountryResponse;
-import com.penek.shortUrl.Dto.LogDto;
-import com.penek.shortUrl.Dto.OriginUrlDto;
-import com.penek.shortUrl.Entity.LogEntity;
+import com.penek.shortUrl.Dto.RequestInformation;
 import com.penek.shortUrl.Entity.ShortEntity;
 import com.penek.shortUrl.Exception.CustomException;
 import com.penek.shortUrl.Exception.ErrorCode;
 import com.penek.shortUrl.Repository.LogRepository;
 import com.penek.shortUrl.Repository.ShortRepository;
+import com.penek.shortUrl.config.Browser;
+import com.penek.shortUrl.config.OperatingSystem;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +16,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -54,83 +51,21 @@ public class ShortService {
         return ResponseEntity.ok(shortUrl);
     }
 
-    public String go(LogDto.dataCollection data) throws IOException, GeoIp2Exception {
-
-
-        BigInteger idx = shortUrlToIdx(data.getHangul());
-
-        String country = "";
-
-        URL r = this.getClass().getResource("");
-
-        String path = r.getPath();
-        String filePath = "classpath:GeoLite2-Country_20220308/GeoLite2-Country.mmdb";
-        Resource resource = resourceLoader.getResource(filePath);
-        if (resource.exists() == false) {
-            resource = new ClassPathResource("");
-            log.error("Invalid filePath : {}", filePath);
-            throw new CustomException(ErrorCode.IP_DB_NOT_FOUND);
-        }
-
-        try {
-            InputStream geo2Ipdatabase = new BufferedInputStream(resource.getInputStream());
-            DatabaseReader reader = new DatabaseReader.Builder(geo2Ipdatabase).build();
-            InetAddress ipAddress = InetAddress.getByName(data.getIp());
-            CountryResponse response = reader.country(ipAddress);
-            country = String.valueOf(response.getCountry().getIsoCode());
-        } catch (AddressNotFoundException | UnknownHostException e){
-            country = "Unknown Country";
-        }
-
-        data.setUserAgent(data.getUserAgent().toLowerCase(Locale.ROOT));
-        if (data.getUserAgent().isEmpty()) data.setUserAgent("Unknown UserAgent");
-
-        String osName = "Unknown OS";
-        if (data.getUserAgent().contains("win")) osName = "Windows";
-        if (data.getUserAgent().contains("mac")) osName = "MacOS";
-        if (data.getUserAgent().contains("linux")) osName = "Linux";
-        if (data.getUserAgent().contains("android")) osName = "Android";
-        if (data.getUserAgent().contains("like mac")) osName = "iOS";
-
-        String browser = "Unknown Browser";
-        if (data.getUserAgent().contains("chrome")) browser = "Chrome";
-        if (data.getUserAgent().contains("firefox")) browser = "Firefox";
-        if (data.getUserAgent().contains("trident")) browser = "IE";
-        if (data.getUserAgent().contains("safari")) browser = "Safari";
-        if (data.getUserAgent().contains("edge")) browser = "Edge";
-        if (data.getUserAgent().contains("opera")) browser = "Opera";
-        if (data.getUserAgent().contains("whale")) browser = "Whale";
-        if (data.getUserAgent().contains("samsung")) browser = "Samsung Internet";
-
-
-        OriginUrlDto originUrl = shortRepository.getUrl(idx);
-
-
-        log.info("########## user approached at {} #########", data.getHangul());
-        log.info("    connected header information");
-        log.info("    ip Addr : {}", data.getIp());
-        log.info("    country : {}", country);
-        log.info("    userAgent : {}", data.getUserAgent());
-        log.info("    browser : {}", browser);
-        log.info("    platform : {}", osName);
-        log.info("    referer : {}", data.getReferer());
-        log.info("    origin Url : {}", originUrl.getUrl());
-        log.info("################################################");
-
-        LogEntity logEntity = LogEntity.builder().country(country)
-                .pageId(originUrl.getIdx())
-                .referer(data.getReferer())
-                .platform(osName)
-                .userAgent(browser)
-                .build();
-
-        logRepository.save(logEntity);
-
-
-        return originUrl.getUrl();
+    @Transactional
+    public String restoreToOriginalUrl(RequestInformation data) {
+        logging(data);
+        return getOriginalUrl(data.getHangul());
     }
 
-    public BigInteger shortUrlToIdx(String link) {
+    private void saveLogDatabase(RequestInformation data) {
+        logRepository.save(CreateLog(shortUrl2Index(data.getHangul()), data));
+    }
+
+    private String getOriginalUrl(String hangul) {
+        return shortRepository.getUrl(shortUrl2Index(hangul)).getUrl();
+    }
+
+    private BigInteger shortUrl2Index(String link) {
         try {
             link = link.substring(0, 5);
 

@@ -1,7 +1,6 @@
 package com.penek.shortUrl.Controller;
 
-import com.maxmind.geoip2.exception.GeoIp2Exception;
-import com.penek.shortUrl.Dto.LogDto;
+import com.penek.shortUrl.Dto.RequestInformation;
 import com.penek.shortUrl.Exception.CustomException;
 import com.penek.shortUrl.Exception.ErrorCode;
 import com.penek.shortUrl.Service.RecaptchaService;
@@ -58,37 +57,22 @@ public class ShortController {
         }
     }
 
+    @GetMapping("/favicon.ico")
+    public void favicon() {
+    }
+
     @GetMapping("/{hangul}")
-    public ResponseEntity<String> tts(@PathVariable String hangul){
-        log.warn("called go {}", hangul);
-        if(hangul.length() > 5)
-            return null;
+    public ResponseEntity<String> hangulToUrl(@PathVariable String hangul) {
+        RequestInformation data = RequestInformation.createRequestDto(hangul);
+        return redirectToOriginalUrl(data);
+    }
 
-        HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-        String ip = req.getHeader("X-FORWARDED-FOR");
-        if (ip == null)
-            ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
-        String referer = req.getHeader("Referer");
-
-
-        LogDto.dataCollection data = LogDto.dataCollection.builder().ip(ip)
-                .userAgent(userAgent)
-                .referer(referer)
-                .hangul(hangul).build();
-
-        try { //임시방편
-            String originUrl = shortService.go(data);
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.setLocation(URI.create(originUrl));
-            return ResponseEntity.status(HttpStatus.FOUND)
-                    .headers(responseHeaders)
-                    .body("");
-        } catch (IOException | GeoIp2Exception e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return ResponseEntity.badRequest().body("Err");
+    private ResponseEntity<String> redirectToOriginalUrl(RequestInformation data) {
+        String originUrl = shortService.restoreToOriginalUrl(data);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.setLocation(URI.create(originUrl));
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .headers(responseHeaders)
+                .body("");
     }
 }
